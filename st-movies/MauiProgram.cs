@@ -1,4 +1,5 @@
-﻿using st_movies.Services;
+﻿using Microsoft.Extensions.Logging;
+using st_movies.Services;
 using st_movies.ViewModels;
 using st_movies.Views;
 
@@ -17,12 +18,16 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		builder.Services.AddSingleton<MovieService>();
+#if DEBUG
+		builder.Logging.AddDebug();
+#endif
+
+        builder.Services.AddSingleton<MovieService>();
 
         builder.Services.AddSingleton<MainViewModel>();
         builder.Services.AddTransient<MovieDetailsViewModel>();
-        
-		builder.Services.AddSingleton<MainPage>();
+
+        builder.Services.AddSingleton<MainPage>();
         builder.Services.AddTransient<MovieDetailsPage>();
 
         return builder.Build();
