@@ -4,16 +4,20 @@ namespace st_movies.Views;
 
 public partial class MovieDetailsPage : ContentPage
 {
-	public MovieDetailsPage(MovieDetailsViewModel viewModel)
+    private readonly MovieDetailsViewModel viewModel;
+
+    public MovieDetailsPage(MovieDetailsViewModel viewModel)
 	{
 		InitializeComponent();
 		BindingContext = viewModel;
-	}
+        this.viewModel = viewModel;
+    }
 
-    protected override async void OnAppearing()
+    protected override void OnAppearing()
     {
         base.OnAppearing();
-        MovieDetailsViewModel viewModel = (MovieDetailsViewModel)BindingContext;
-        await viewModel.GetMovieDetails(viewModel.MovieId);
+
+        if (!viewModel.MovieId.Equals(viewModel.Movie?.id))
+            viewModel.GetMovieDetailsCommand.Execute(viewModel.MovieId);
     }
 }

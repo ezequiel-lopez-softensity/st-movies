@@ -8,7 +8,7 @@
              Title="{Binding Title}">
     <VerticalStackLayout>
         <Label 
-            Text="{Binding MovieId}"
+            Text="{Binding Movie.overview}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>
