@@ -36,4 +36,23 @@ public class MovieService
 
         return movieList;
 	}
+
+    public async Task<Movie> GetMovieDetails(int movieId)
+    {
+        var movie = new Movie();
+        var url = $"https://api.themoviedb.org/3/movie/{movieId}?api_key={apiKey}";
+
+        var response = await httpClient.GetAsync(url);
+
+        if (response.IsSuccessStatusCode)
+        {
+            using (var responseStream = await response.Content.ReadAsStreamAsync())
+            {
+                var data = await JsonSerializer.DeserializeAsync<Movie>(responseStream);
+                movie = data;
+            }
+        }
+
+        return movie;
+    }
 }

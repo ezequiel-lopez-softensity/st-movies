@@ -21,6 +21,11 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Movie">
                     <Frame>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=GoToMovieDetailCommand}"
+                                CommandParameter="{Binding id}"/>
+                        </Frame.GestureRecognizers>
                         <HorizontalStackLayout VerticalOptions="Center">
                             <Image Source="{Binding thumbnail_poster_path}" />
                             <VerticalStackLayout

@@ -18,8 +18,12 @@ public static class MauiProgram
 			});
 
 		builder.Services.AddSingleton<MovieService>();
+
         builder.Services.AddSingleton<MainViewModel>();
-        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddTransient<MovieDetailsViewModel>();
+        
+		builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddTransient<MovieDetailsPage>();
 
         return builder.Build();
 	}

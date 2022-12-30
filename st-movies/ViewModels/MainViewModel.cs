@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using st_movies.Models;
 using st_movies.Services;
+using st_movies.Views;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 
@@ -46,5 +47,13 @@ public partial class MainViewModel : BaseViewModel
         {
             IsBusy = false;
         }
+    }
+
+    [RelayCommand]
+    private async Task GoToMovieDetail(int movieId)
+    {
+        if (movieId.Equals(0)) return;
+
+        await Shell.Current.GoToAsync($"{nameof(MovieDetailsPage)}?movieId={movieId}");
     }
 }

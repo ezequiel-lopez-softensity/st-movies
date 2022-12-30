@@ -53,7 +53,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\MovieDetailsPage.xaml.cs">
+	    <DependentUpon>MovieDetailsPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Views\MainPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\MovieDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
