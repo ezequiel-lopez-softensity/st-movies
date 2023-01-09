@@ -17,13 +17,13 @@ public partial class MovieDetailsViewModel : BaseViewModel
     public MovieDetailsViewModel(MovieService movieService)
 	{
         this.movieService = movieService;
-        Title = "Movie: ";
+        Title = " ";
     }
 
     [RelayCommand]
     public async Task GetMovieDetails(int movieId)
     {
         Movie = await movieService.GetMovieDetails(movieId);
-        Title += Movie.title;
+        Title += $"{Movie.title} ({Movie.release_year})";
     }
 }

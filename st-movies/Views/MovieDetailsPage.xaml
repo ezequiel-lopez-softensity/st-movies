@@ -6,10 +6,41 @@
              xmlns:viewmodel="clr-namespace:st_movies.ViewModels"
              x:DataType="viewmodel:MovieDetailsViewModel"
              Title="{Binding Title}">
-    <VerticalStackLayout>
+    <Grid
+        ColumnDefinitions="*"
+        RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+        Padding="10"
+        RowSpacing="10"
+        ColumnSpacing="10">
+        <Label
+            Text="{Binding Movie.tagline}"
+            FontSize="Small"
+            TextColor="Grey"
+            LineBreakMode="WordWrap"
+            MaxLines="5"/>
+        
+        <Image
+            Grid.Row="1"
+            Source="{Binding Movie.poster_path}"
+            HeightRequest="250"
+            WidthRequest="200"/>
+
         <Label 
+            Grid.Row="2"
             Text="{Binding Movie.overview}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+            LineBreakMode="WordWrap"
+            MaxLines="10"/>
+
+        <Label 
+            Grid.Row="3"
+            Text="{Binding Movie.genre_description}"
+            LineBreakMode="WordWrap"
+            MaxLines="5"/>
+
+        <Label 
+            Grid.Row="4"
+            Text="{Binding Movie.homepage}"
+            LineBreakMode="WordWrap"
+            MaxLines="5"/>
+    </Grid>
 </ContentPage>
